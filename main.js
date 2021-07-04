@@ -132,3 +132,34 @@ function breadthTraversal(tree) {
 }
 
 console.log(breadthTraversal(depthTree))
+
+const braces = '([{}])'
+
+function bracesValidator(str) {
+  const openingBraces = new Set(['(', '{', '['])
+  const closingBraces = new Set([')', '}', ']'])
+  const braces = {
+    '(': ')',
+    '{': '}',
+    '[': ']'
+  }
+  const arr = str.split('')
+  const currentBraceStack = [];
+  for (const brace of arr) {
+    if(openingBraces.has(brace)){
+      currentBraceStack.push(brace)
+    }
+    if(closingBraces.has(brace)){
+      if(braces[currentBraceStack[currentBraceStack.length - 1]]!==brace){
+        return false;
+      } else {
+        currentBraceStack.pop();
+      }
+    }
+  }
+  return currentBraceStack.length === 0;
+}
+console.log(bracesValidator(braces));
+console.log(bracesValidator(braces + '()'))
+console.log(bracesValidator(braces + '('))
+console.log(bracesValidator(braces + ')'))
