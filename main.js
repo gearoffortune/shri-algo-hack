@@ -116,3 +116,19 @@ function depthTraversal(tree) {
 }
 
 console.log(depthTraversal(depthTree))
+
+function breadthTraversal(tree) {
+  let res = [];
+  let queue = [];
+  queue.push(tree);
+  while(queue.length !== 0){
+    const currTree = queue.shift();
+    res.push(currTree.val);
+    if(currTree.children){
+      queue.push(...currTree.children);
+    }
+  }
+  return res;
+}
+
+console.log(breadthTraversal(depthTree))
