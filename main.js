@@ -25,7 +25,7 @@ function selectionSort(arr) {
   for(let i = arr.length - 1; i !== 0; i--){
 
     let maxIndex = 0;
-    let max = -Infinity;
+    let max = arr[0];
 
     for(let j = 0; j <= i; j++){
       if(max < arr[j]){
