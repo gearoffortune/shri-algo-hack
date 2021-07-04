@@ -40,3 +40,31 @@ function selectionSort(arr) {
 }
 
 console.log(selectionSort(selectionArray))
+
+insertionArray = [3, 8, 5, 7, 0, 2]
+function insertionSort(arr) {
+
+  function insert(arr, pos, val) {
+    arr[pos] = val;
+  }
+
+
+  for(let i = 1; i < arr.length; i++){
+    const k = arr[i];
+
+    for(let j = i - 1; j >= 0; j--){
+      if(k > arr[j]){
+        insert(arr, j + 1, k);
+        break;
+      }
+      if(j === 0) {
+        insert(arr, 0, k)
+        break;
+      }
+      insert(arr, j + 1, arr[j])
+    }
+  }
+  return arr;
+}
+
+console.log(insertionSort(insertionArray))
