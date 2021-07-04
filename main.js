@@ -150,10 +150,9 @@ function bracesValidator(str) {
       currentBraceStack.push(brace)
     }
     if(closingBraces.has(brace)){
-      if(braces[currentBraceStack[currentBraceStack.length - 1]]!==brace){
+      lastBrace = currentBraceStack.pop();
+      if(braces[lastBrace]!==brace){
         return false;
-      } else {
-        currentBraceStack.pop();
       }
     }
   }
