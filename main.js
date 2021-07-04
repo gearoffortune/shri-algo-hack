@@ -68,3 +68,51 @@ function insertionSort(arr) {
 }
 
 console.log(insertionSort(insertionArray))
+
+const depthTree = {
+  val: 1,
+  children: [
+    {
+      val: 2,
+      children: [
+        {
+          val: 3,
+          children: null
+        },
+        {
+          val: 4,
+          children: null
+        },
+        {
+          val: 5,
+          children: null
+        }
+      ]
+    },
+    {
+      val: 6,
+      children: [
+        {
+          val: 7,
+          children: null
+        }
+      ]
+    }
+  ]
+}
+
+function depthTraversal(tree) {
+  let res = [];
+  let stack = [];
+  stack.push(tree);
+  while(stack.length !== 0){
+    const currTree = stack.shift();
+    res.push(currTree.val);
+    if(currTree.children){
+      stack.unshift(...currTree.children);
+    }
+  }
+  return res;
+}
+
+console.log(depthTraversal(depthTree))
