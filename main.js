@@ -164,26 +164,17 @@ console.log(bracesValidator(braces + '('))
 console.log(bracesValidator(braces + ')'))
 
 function primesBeforeN(n) {
-  function createIsPrime() {
-    prevPrimes = [];
-
-
-    return (num) => {
-      const lastPrevPrime = !!prevPrimes ? prevPrimes[prevPrimes.length] : 1; 
-      for(prime of prevPrimes){
-        if(num % prime === 0) return false;
-      }
-      for(let i = lastPrevPrime; i < num; i++){
-        if(num % i === 0) return false;
-      }
-      prevPrimes.push(num);
-      return true;
-    }
-  }
-
-  const isPrime = createIsPrime();
 
   const res = [];
+
+    const isPrime = (num) => {
+      for(prime of res){
+        if(num % prime === 0) return false;
+      }
+      return true;
+    }
+
+
 
   for(let i = 2; i < n; i++){
     if(isPrime(i)) res.push(i)
